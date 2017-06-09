@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+     <html>
+     <head><meta  content='text/html; charset=utf-8'>
+     <title>ESP8266</title>
+	 <script src="jquery-1.11.3.min.js"></script>
+	 <script>
+
+function callEsp(id){
+        $.ajax({
+			url : 'http://10.121.20.43:80/esp8266/',
+			data : {pinno: id,value:$('#'+id).val()},
+			success : function(responseText) {
+				$('#ajaxResponse').html(responseText);
+				$('#'+id).attr('value', "OFF");
+			}, 
+			error: function(jqXHR, textStatus, errorThrown){
+            },
+            beforeSend: function(jqXHR, settings){
+			$('#ajaxResponse').html("beforeSend");
+            },
+            complete: function(jqXHR, textStatus){
+			//$('#ajaxResponse').html("complete");
+            }
+		});
+
+
+}
+
+
+	 </script>
+	 
+	 
+	 </head>
+     <body><h1>Sample GPIO output control</h1>
+	 <table>
+	 <tr><td>Main Light</td><td><input class="btn" id="pin13" onclick='callEsp(this.id)' type='submit' name='pin13' value='ON'></td><td></td></tr>
+	 <tr><td>Bath Light</td><td><input class="btn" id="pin12" onclick='callEsp(this.id)' type='submit' name='pin12' value='ON'></td><td><input type='submit' name='pin12' value='OFF'></td></tr>
+	 <tr><td>Fan 1</td><td><input class="btn" id="pin14" onclick='callEsp(this.id)' type='submit' name='pin14' value='ON'></td><td><input type='submit' name='pin14' value='OFF'></td></tr>
+	 <tr><td>Fan 2</td><td><input  class="btn"id="pin15" onclick='callEsp(this.id)' type='submit' name='pin15' value='ON'></td><td><input type='submit' name='pin15' value='OFF'></td></tr>
+	 <tr><td>ALL In Room2</td><td>&nbsp;</td><td><input class="btn" id="pin99" onclick='callEsp(this.id)' type='submit' name='pin99' value='OFF'></td></tr>
+	 <br>
+	 <div id="ajaxResponse"></div>
+	 
+	 </table>
+	 </body>
+</html>

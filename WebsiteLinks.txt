@@ -1,0 +1,4 @@
+Wifi communication with Arduino and nodeMcu
+https://www.youtube.com/watch?v=8a2FzAr2pcA
+https://learn.sparkfun.com/tutorials/ir-communication
+https://learn.sparkfun.com/tutorials/ir-control-kit-hookup-guide
